@@ -87,6 +87,10 @@ void etf(){
 	}
 }
 
+
+// Miller rabin 
+
+
 bool miller(ll n){
 	if(n <=1 || n % 2 == 0){
 		if(n != 2){
@@ -116,4 +120,25 @@ bool miller(ll n){
 		}  
 	}
 	return true;
+}
+
+
+// Exteneded Euclid 
+
+
+struct node{
+	ll x, y;
+};
+struct node exteuclid(ll a, ll b){
+	if(a % b == 0){
+		node ret;
+		ret.x = 0;
+		ret.y = 1;
+		return ret;
+	}
+	node ans = exteuclid(b, a % b);
+	node ret;
+	ret.x = ans.y;
+	ret.y = ans.x - (a / b) * ans.y;
+	return ret;
 }
