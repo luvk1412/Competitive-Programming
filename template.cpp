@@ -67,7 +67,7 @@ ll binexp2(ll a, ll b, ll m){
 void sieve(){
 	for(int i = 2; i < 100001; ++i){
 		if(isprime[i] == 0){
-			for(int j = 2; j < 100001; ++j){
+			for(int j = 2; i*j < 100001; ++j){
 				isprime[i*j] = 1;
 			}
 		}
