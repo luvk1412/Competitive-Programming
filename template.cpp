@@ -88,7 +88,7 @@ void etf(){
 }
 
 
-// Miller rabin 
+// miller rabin 
 
 
 bool miller(ll n){
@@ -123,7 +123,7 @@ bool miller(ll n){
 }
 
 
-// Exteneded Euclid 
+// extended euclid 
 
 
 struct node{
@@ -141,4 +141,21 @@ struct node exteuclid(ll a, ll b){
 	ret.x = ans.y;
 	ret.y = ans.x - (a / b) * ans.y;
 	return ret;
+}
+
+// binary indexed tree
+
+void update(ll i, ll x, ll bit[], ll n){
+	while(i <= n){
+		bit[i] += x;
+		i = i + (i & (-i));
+	}
+}
+ll sum(ll i, ll bit[]){
+	ll ans = 0;
+	while(i != 0 && i > 0){
+		ans += bit[i];
+		i = (i & (i-1));
+	}
+	return ans;
 }
