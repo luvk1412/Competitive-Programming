@@ -1,5 +1,11 @@
 #include <bits/stdc++.h>
 #define ll long long
+#define pb push_back
+#define mp make_pair
+#define p(x) printf("%lld\n", x)
+#define plf(x) printf("%lf\n", x)
+#define s(x) scanf("%lld", &x)
+#define slf(x) scanf("%lf", &x)
 using namespace std;
 
 bool cmp(node a, node b){
