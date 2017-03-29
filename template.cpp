@@ -2,10 +2,16 @@
 #define ll long long
 #define pb push_back
 #define mp make_pair
+#define fi first
+#define se second
 #define p(x) printf("%lld\n", x)
-#define plf(x) printf("%lf\n", x)
+#define p2(x) printf("%lld %lld\n", x)
+#define pf(x) printf("%lf\n", x)
 #define s(x) scanf("%lld", &x)
-#define slf(x) scanf("%lf", &x)
+#define sf(x) scanf("%lf", &x)
+#define INF (long long)2000000000000000000 
+#define fill1(a, n, x) for(int i = 0; i < n; ++i){a[i] = x;}
+#define fill2(a, n, m, x) for(int i=0;i<n;++i){for(int j=0;j<m;++j){a[i][j]=x;}}
 using namespace std;
 
 bool cmp(node a, node b){
