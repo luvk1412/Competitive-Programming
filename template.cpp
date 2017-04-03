@@ -9,9 +9,7 @@
 #define pf(x) printf("%lf\n", x)
 #define s(x) scanf("%lld", &x)
 #define sf(x) scanf("%lf", &x)
-#define INF (long long)2000000000000000000 
-#define fill1(a, n, x) for(int i = 0; i < n; ++i){a[i] = x;}
-#define fill2(a, n, m, x) for(int i=0;i<n;++i){for(int j=0;j<m;++j){a[i][j]=x;}}
+#define INF (long long)2000000000000000000
 using namespace std;
 
 bool cmp(node a, node b){
