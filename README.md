@@ -21,4 +21,5 @@ Build system to directly compile and run c++ programs in sublime on linux. Moreo
 
 ***This is how it looks***
 
-![picture alt](https://ibb.co/e6EGwF)
+![screenshot from 2017-04-04 05-35-27](https://cloud.githubusercontent.com/assets/11024840/24636899/0511b208-18fb-11e7-88d5-6cf4b810370b.png "Sublime Build Sytem - C++14")
+
