@@ -13,8 +13,8 @@ Build system to directly compile and run c++ programs in sublime on linux. Moreo
 * Copy the code from C++14.sublime-build and paste it ther and save it by any name.
 * Go to Tools > Build Systems ans select your new build system
 * Create 2 files named inputf.in and outputf.in in same directory in which u have ur code.
-* write input in input file, save and run the code in sublime and you will get output in output file.
+* Write input in inputf.in, save and run the code in sublime and you will get output in outputf.in .
 
-*** Tips :
+***Tips :***
 * You can use CTRL + shift + B to directly compile run
 * You can use 3 pane setup to view code, input dile and output file at once (ALT + SHIFT + 3).
