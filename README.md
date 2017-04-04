@@ -16,5 +16,7 @@ Build system to directly compile and run c++ programs in sublime on linux. Moreo
 * Write input in inputf.in, save and run the code in sublime and you will get output in outputf.in .
 
 ***Tips :***
-* You can use CTRL + shift + B to directly compile run
+* You can use CTRL + shift + B to directly compile run.
 * You can use 3 pane setup to view code, input dile and output file at once (ALT + SHIFT + 3).
+***This is how it looks***
+![picture alt](https://drive.google.com/file/d/0Bzc9PrN7MCOYNkpSUWtkaXp6ZmM/view?usp=sharing "C++14 build system")
