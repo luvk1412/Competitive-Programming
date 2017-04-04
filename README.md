@@ -8,7 +8,7 @@ c++ codes for various functions
 
 Build system to directly compile and run c++ programs in sublime on linux. Moreover it uses c++14 directly opposed to the fact that terminal doesnt.
 
-#### Instructions :
+***Instructions :***
 * Go to Tools > Build Systems > New Build System
 * Copy the code from C++14.sublime-build and paste it ther and save it by any name.
 * Go to Tools > Build Systems ans select your new build system
