@@ -21,9 +21,13 @@ bool cmp(node a, node b){
 	}
 }
 
-ll divide(ll a[], ll x, ll n){
+ll divide(string s, ll x){
+	vector <ll> a;
+	for(int i = 0; i < s.size(); ++i){
+		a.pb((ll)s[i] - '0');
+	}
 	ll temp = 0;
-	for(int i = 0; i < n; ++i){
+	for(int i = 0; i < a.size(); ++i){
 		temp = temp *10 + a[i];
 		if(temp >= x){
 			temp %= x;
