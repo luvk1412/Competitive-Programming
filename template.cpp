@@ -52,7 +52,7 @@ ll divide(string s, ll x){
 ll multiply(ll a, ll b, ll m){
 	ll result = 0;
 	while(b>0){
-		if(b % 2 == 1){
+		if(b & 1){
 			result = result + a;
 			result %= m;
 		}
@@ -66,7 +66,7 @@ ll multiply(ll a, ll b, ll m){
 ll binexp1(ll a, ll b, ll m){
 	ll result = 1;
 	while(b>0){
-		if(b % 2 == 1){
+		if(b & 1){
 			result = result * a;
 			result %= m;
 		}
@@ -80,7 +80,7 @@ ll binexp1(ll a, ll b, ll m){
 ll binexp2(ll a, ll b, ll m){
 	ll result = 1;
 	while(b>0){
-		if(b % 2 == 1){
+		if(b & 1){
 			result = multiply(result, a, m);
 			result %= m;
 		}
