@@ -6,7 +6,8 @@
 #define se second
 #define p(x) printf("%d\n", x)
 #define pl(x) printf("%lld\n", x)
-#define p2(x) printf("%lld %lld\n", x)
+#define p2(x, y) printf("%d %d\n", x, y)
+#define pl2(x, y) printf("%lld %lld\n", x, y)
 #define pf(x) printf("%lf\n", x)
 #define s(x) scanf("%d", &x)
 #define sl(x) scanf("%lld", &x)
