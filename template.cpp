@@ -10,6 +10,7 @@
 #define s(x) scanf("%d", &x)
 #define sl(x) scanf("%lld", &x)
 #define sf(x) scanf("%lf", &x)
+#define bitcount __builtin_popcountll
 #define INF 1e18+9
 #define endl '\n'
 #define FIO ios_base::sync_with_stdio(false)
@@ -100,13 +101,11 @@ ll binexp2(ll a, ll b, ll m){
 	while(b>0){
 		if(b & 1){
 			result = multiply(result, a, m);
-			result %= m;
 		}
 		a = multiply(a, a, m);
-		a %= m;
 		b = b >> 1;
 	}
- d	return result;
+	return result;
 }
 
 void sieve(){
@@ -265,4 +264,101 @@ void Union(int a, int b){
 		if(rnk[a] == rnk[b])
 			rnk[a]++;
 	}
+}
+
+//    MST
+void merge(int v, int vl, int vr){
+	int i = 0, j = 0;
+	for(i = 0, j = 0; i < t[vl].size() && j < t[vr].size();){
+		if(t[vl][i] <= t[vr][j]){
+			t[v].pb(t[vl][i]);
+			++i;
+		}
+		else{
+			t[v].pb(t[vr][j]);
+			++j;
+		}
+	}
+	while(i < t[vl].size()){
+		t[v].pb(t[vl][i]);
+		++i;
+	}
+	while(j < t[vr].size()){
+		t[v].pb(t[vr][j]);
+		++j;
+	}
+}
+void build(int v, int tl, int tr){
+	if(tl == tr){
+		t[v].pb(a[tl]);
+	}
+	else{
+		int tm = (tl+tr) >> 1;
+		build(v << 1, tl, tm);
+		build((v << 1)+1, tm+1, tr);
+		merge(v, v << 1, (v << 1) + 1);
+	}
+}
+int qry(int v, int tl, int tr, int l, int r, int k){
+	if(l > r){
+		return 0;
+	}
+	if(tl == l && tr == r){
+		auto it = upper_bound(t[v].begin(), t[v].end(), k);
+		return (t[v].end()-it);
+	}
+	int tm = (tl + tr) >> 1;
+	return qry(v << 1, tl, tm, l, min(tm, r), k) + qry((v << 1)+1, tm + 1, tr, max(l, tm+1), r, k);
+}
+
+// LCA
+#define MLOG 18
+int parent[MAX][MLOG], level[MAX], tin[MAX], tout[MAX], timer, vis[MAX];
+vector <int> g[MAX];
+void dfs(int node){
+	vis[node] = 1;
+	tin[node] = ++timer;
+	for(int i : g[node]){
+		if(vis[i] == 0){
+			parent[i][0] = node;
+			level[i] = level[node]+1;
+			dfs(i);
+		}
+	}
+	tout[node] = timer;
+}
+void setparent(int n){
+	for(int i = 1 ; i < MLOG ; ++i){
+		for(int j = 1 ; j <= n; ++j){
+			parent[j][i] = parent[parent[j][i-1]][i-1];
+		}
+	}
+}
+bool isanc(int top , int bot){
+	return (tin[top] <= tin[bot]) && (tout[bot] <= tout[top]);
+}
+int lca(int a, int b){
+	int diff = level[a] - level[b];
+	if(diff < 0){
+		swap(a, b);
+		diff *= -1;
+	}
+	for(int i = 0; i < MLOG; ++i){
+		if(diff & (1LL<<i)){
+			a = parent[a][i];
+		}
+	}
+	if(a != b){
+		for(int i = MLOG-1; i >= 0; --i){
+			if(parent[a][i] != parent[b][i]){
+				a = parent[a][i];
+				b = parent[b][i];
+			}
+		}
+		a = parent[a][0];
+	}
+	return a;
+} 
+int dist(int a , int b){
+	return level[a] + level[b] - 2 * level[lca(a , b)];
 }
