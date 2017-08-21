@@ -325,7 +325,7 @@ void dfs(int node){
 			dfs(i);
 		}
 	}
-	tout[node] = timer;
+	tout[node] = ++timer;
 }
 void setparent(int n){
 	for(int i = 1 ; i < MLOG ; ++i){
@@ -334,7 +334,7 @@ void setparent(int n){
 		}
 	}
 }
-bool isanc(int top , int bot){
+bool isanc(int top, int bot){
 	return (tin[top] <= tin[bot]) && (tout[bot] <= tout[top]);
 }
 int lca(int a, int b){
@@ -362,3 +362,95 @@ int lca(int a, int b){
 int dist(int a , int b){
 	return level[a] + level[b] - 2 * level[lca(a , b)];
 }
+
+//  MATRIX EXPO
+
+void matmul(ll a[3][3], ll b[3][3], ll c[3][3]){
+	int i, j, k;
+	for(i = 0; i < 3; ++i){
+		for(j = 0; j < 3; ++j){
+			c[i][j] = 0;
+			for(k = 0; k < 3; ++k){
+				c[i][j] += (a[i][k]*b[k][j];) % M;
+				c[i][j] %= M;
+			}
+		}
+	}
+}
+
+void matexp(ll a[3][3], ll b, ll ans[3][3]){
+	int i, j;
+	ll tmp[3][3];
+	for(i = 0; i < 3; ++i){
+		for(j = 0; j < 3; ++j){
+			if(i == j){
+				ans[i][j] = 1;
+			}
+			else{
+				ans[i][j] = 0;
+			}
+		}
+	}
+	while(b > 0){
+		if(b&1){
+			matmul(ans, a, tmp);
+			for(i = 0; i < 3; ++i)
+				for(j = 0; j < 3; ++j)
+					ans[i][j] = tmp[i][j];
+		}
+		matmul(a, a, tmp);
+		for(i = 0; i < 3; ++i)
+			for(j = 0; j < 3; ++j)
+				a[i][j] = tmp[i][j];
+		b >>= 1;
+	}
+}
+// KMP
+void LPS(string &p){
+	lps[0] = 0;
+	int i = 1, j = 0;
+	while(i < p.size()){
+		if(p[i] == p[j]){
+			j++;
+			lps[i] = j;
+			i++;
+		}
+		else if(j > 0){
+			j = lps[j-1];
+		}
+		else{
+			lps[i] = 0;
+			i++;
+		}
+	}
+}
+// TRIE
+struct TRIE{
+	int next[MAX][13];
+	int end[MAX];
+	int sz;
+	void clear(){
+		memset(next, -1, sizeof(next));
+		memset(end, 0, sizeof(end));
+		sz = 0;
+	}
+	int insert(string &s){
+		int v = 0, i;
+		for(i = 0; i < s.size(); ++i){
+			if(next[v][s[i] - 'a'] == -1){
+				next[v][s[i] - 'a'] = ++sz;
+			}
+			v = next[v][s[i] - 'a'];
+		}
+		end[v]++;
+	}
+	bool search(string &s){
+		int v = 0, i;
+		for(i = 0; i < s.size(); ++i){
+			if(next[v][s[i] - 'a'] == -1)
+				return false;
+			v = next[v][s[i] - 'a'];
+		}
+		return (end[v] > 0);
+	}
+}tr;
