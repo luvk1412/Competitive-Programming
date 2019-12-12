@@ -657,15 +657,15 @@ struct edge{
 };
 vector <int> g[MAX];
 vector <edge> e;
-int w, c, source, sink, level[MAX], ptr[MAX], sp[MAX];
+int source, sink, level[MAX], ptr[MAX];
 
 void add_edge(int from, int to, int cap){
 	edge e1 = {from, to, cap, 0};
 	edge e2 = {to, from, 0, 0};
-	g[from].pb(e.size());
-	e.pb(e1);
-	g[to].pb(e.size());
-	e.pb(e2);
+	g[from].push_back(e.size());
+	e.push_back(e1);
+	g[to].push_back(e.size());
+	e.push_back(e2);
 }
 
 int bfs(){
