@@ -20,7 +20,7 @@ Build system to directly compile and run c++ programs in sublime on linux. Moreo
 * You can use 3 pane setup to view code, input dile and output file at once (ALT + SHIFT + 3).
 
 ## C++14.sublime-build (FOR OS X(Mac Users) ) :
-
+Test
 Follow the same steps above just copy the sublime build file corresponding to OS X. You need to have gcc and gtimout installed to be able to run above build system.
 
 To install gcc in OS X : 
