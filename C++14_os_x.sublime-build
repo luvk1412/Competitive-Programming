@@ -1,5 +1,5 @@
 {
-  "cmd" : ["g++-10 $file_name -o $file_base_name && gtimeout 4s ./$file_base_name<inputf.in>outputf.in"], 
+  "cmd" : ["g++-11 $file_name -o $file_base_name && gtimeout 4s ./$file_base_name<inputf.in>outputf.in"], 
   "selector" : "source.c",
   "shell": true,
   "working_dir" : "$file_path"
