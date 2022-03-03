@@ -4,3 +4,10 @@
   "shell": true,
   "working_dir" : "$file_path"
 }
+// This works on clang compiler
+{
+"cmd" : ["g++ -std=c++11 -Wall ${file_name} -o ${file_base_name} && ./$file_base_name<inputf.in>outputf.in"],
+"selector" : "source.c",
+"shell": true,
+"working_dir" : "$file_path"
+}
