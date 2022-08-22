@@ -1,6 +1,6 @@
 {
-"cmd" : ["g++ -std=c++14 $file_name -o $file_base_name && timeout 4s ./$file_base_name<inputf.in>outputf.in"], 
-"selector" : "source.c",
+"cmd" : ["g++ -std=c++17 $file_name -o $file_base_name && timeout 4s ./$file_base_name<inputf.in>outputf.in"], 
+"selector" : "source.c, source.c++, source.cxx, source.cpp",
 "shell": true,
 "working_dir" : "$file_path"
 }
